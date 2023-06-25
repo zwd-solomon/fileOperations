@@ -1,0 +1,23 @@
+
+#reading a csv file and maping to dict/json
+
+def readin():
+
+	with open(fl) as filefp:
+		rdr = csv.DictReader(filefp)		
+		for row in rdr:	#dictreder object can be looped like a reader object
+			print(row)
+		
+
+## Using DictWriter class maps a series of dicts to csv
+
+def map_dict_to_csv():
+	with open('data/dicttocsv.csv','w')  as wr:
+	     import json
+	     with open('data/meal_info_test.json') as fp:
+	             meal_json = json.load(fp)
+	             rwr = csv.DictWriter(wr, fieldnames = ['meal_id','category','cuisine'])
+	             rwr.writeheader()
+	             for element in meal_json:
+	                     rwr.writerow(element)
+

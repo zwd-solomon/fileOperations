@@ -1,0 +1,11 @@
+
+import csv, json
+
+with open('jsonfiile','r+') as fp:
+	js = json.load(fp)
+	mappin = map(lambda x: list(x.values), js)
+
+	with open('csvfile','w+') as cfp:
+		cwr = csv.writer(cfp)	# creates a csv writer object
+		for row in mapping:	# read each row | iterate over mappin[D
+			cwr.writerow(row)	# write each row to csv file
