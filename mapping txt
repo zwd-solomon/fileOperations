@@ -1,6 +1,8 @@
 
 #reading a csv file and maping to dict/json
 
+import json
+
 def readin():
 
 	with open(fl) as filefp:
@@ -13,11 +15,9 @@ def readin():
 
 def map_dict_to_csv():
 	with open('data/dicttocsv.csv','w')  as wr:
-	     import json
-	     with open('data/meal_info_test.json') as fp:
-	             meal_json = json.load(fp)
-	             rwr = csv.DictWriter(wr, fieldnames = ['meal_id','category','cuisine'])
-	             rwr.writeheader()
-	             for element in meal_json:
-	                     rwr.writerow(element)
-
+		with open('data/meal_info_test.json') as fp:
+			meal_json = json.load(fp)
+			rwr = csv.DictWriter(wr, fieldnames = ['meal_id','category','cuisine'])
+			rwr.writeheader()
+			for element in meal_json:
+				rwr.writerow(element)
